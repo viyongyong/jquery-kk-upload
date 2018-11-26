@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>上传文件</title>
+    <link type="text/css" rel="stylesheet" href="/jquery-kk-upload/css/upload.css" />
+    <link type="text/css" rel="stylesheet" href="//pip-viyongyong.oss-cn-shanghai.aliyuncs.com/sass/highlight/styles/tomorrow-night-bright.css">
+  </head>
+  <body>
+    <div style="padding: 30px 50px; overflow: hidden;">
+      <div id="images"></div>
+<pre style="margin: 0;"><code class="js">
+  var config = {
+    upload: {
+      authorization: '/common/oss-file-system/get-image-amazon-service',
+      file_uploaded_callback: fileUploadedCallback,
+      upload_complete_callback: uploadCompleteCallback
+    },
+    file_input: 'images'
+  };
+  var images = [
+    {
+      url: 'https://ec-listing-sandbox.oss-cn-shenzhen.aliyuncs.com/9999/images/joom/20180517/F851C8j3r6S0a4D4C5Z6.jpg',
+      name: 'F851C8j3r6S0a4D4C5Z6.jpg'
+    }
+  ];
+  ku = $('#images').createUploadLayer(config, images);
+
+</code></pre>
+    </div>
+    <hr>
+    <div style="padding: 30px 50px; overflow: hidden;">
+      <div id="file"></div>
+    </div>
+  </body>
+  <script type="text/javascript" src="/jquery-kk-upload/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="//pip-viyongyong.oss-cn-shanghai.aliyuncs.com/sass/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" src="/jquery-kk-upload/config.js"></script>
+  <script type="text/javascript" src="/jquery-kk-upload/lib/plupload-2.1.2/plupload.full.min.js"></script>
+  <script type="text/javascript" src="/jquery-kk-upload/lib/move.js"></script>
+  <script type="text/javascript" src="/jquery-kk-upload/lib/extend.js"></script>
+  <script type="text/javascript">
+    var ku, ku2;
+    var fileUploadedCallback = function (file) {
+        console.log(' - callback: ' + file);
+    };
+    var uploadCompleteCallback = function (files) {
+        console.log(' - callback: ', files);
+    };
+    $(document).ready(function(){
+      hljs.initHighlightingOnLoad();
+
+      var config = {
+        upload: {
+          authorization: '/common/oss-file-system/get-image-amazon-service',
+          file_uploaded_callback: fileUploadedCallback,
+          upload_complete_callback: uploadCompleteCallback
+        },
+        file_input: 'images'
+      };
+      var images = [
+        {
+          url: 'https://ec-listing-sandbox.oss-cn-shenzhen.aliyuncs.com/9999/images/joom/20180517/F851C8j3r6S0a4D4C5Z6.jpg',
+          name: 'F851C8j3r6S0a4D4C5Z6.jpg'
+        }
+      ];
+      ku = $('#images').createUploadLayer(config, images);
+
+      config = {
+        upload: {
+          now_upload: false,
+          post_type: 'now',
+          url: '/php/upload.php',
+          file_uploaded_callback: fileUploadedCallback,
+          upload_complete_callback: uploadCompleteCallback
+        },
+        show: {
+          item_show: 'ico'
+        },
+        file_input: 'file'
+      };
+      var files = [
+        {
+          url: 'https://ec-listing-sandbox.oss-cn-shenzhen.aliyuncs.com/9999/images/joom/20180517/F851C8j3r6S0a4D4C5Z6.jpg',
+          name: 'F851C8j3r6S0a4D4C5Z6.jpg'
+        }
+      ];
+      ku2 = $('#file').createUploadLayer(config, files);
+    });
+  </script>
+</html>
