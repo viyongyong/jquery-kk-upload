@@ -1,4 +1,4 @@
 # jquery-kk-upload
 Public upload extensions. support OSS
 
-todo...
+使用说明：http://www.viyongyong.com/ap/upload
